@@ -1010,3 +1010,26 @@ button {
         justify-content: center;
     }
 }
+
+/* ============================================
+   DISABLE CURSOR ON MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+
+    #ember-cursor,
+    .ember-trail-particle,
+    .optimized-cursor {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+    }
+
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: auto !important;
+    }
+}

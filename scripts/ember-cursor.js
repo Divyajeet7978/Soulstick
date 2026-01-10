@@ -30,6 +30,12 @@ class EmberCursor {
     }
 
     init() {
+        // Disable completely on mobile
+        if (window.innerWidth <= 768) {
+            console.log('📱 Mobile device detected - Ember cursor disabled');
+            return;
+        }
+
         this.createCursor();
         this.initPool(); // Initialize DOM and Data
         this.bindEvents();
