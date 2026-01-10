@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./styles/micro-polish.css">
 
     <!-- Critical JavaScript (Non-blocking) -->
-    <script src="https://unpkg.com/three@0.155.0/build/three.min.js" defer></script>
+    <script src="https://unpkg.com/three@0.149.0/build/three.min.js" defer></script>
     <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" defer></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/dist/lenis.min.js" defer></script>
     <script src="./scripts/triple-a-polish.js" defer></script>
@@ -669,13 +669,9 @@
                             <div class="contact-category">
                                 <h4>General Inquiries</h4>
                                 <div class="contact-methods">
-                                    <a href="mailto:soulstickinteractive@gmail.com" class="contact-link">
-                                        <span class="contact-icon">📧</span>
-                                        <span class="contact-text">soulstickinteractive@gmail.com</span>
-                                    </a>
-                                    <a href="mailto:hello@soulstick.studio" class="contact-link">
+                                    <a href="mailto:info@soulstickinteractive.com" class="contact-link">
                                         <span class="contact-icon">💬</span>
-                                        <span class="contact-text">info@soulstick.com</span>
+                                        <span class="contact-text">info@soulstickinteractive.com</span>
                                     </a>
                                 </div>
                             </div>
@@ -683,14 +679,20 @@
                             <div class="contact-category">
                                 <h4>Business & Partnerships</h4>
                                 <div class="contact-methods">
-                                    <a href="mailto:partnerships@soulstick.studio" class="contact-link">
+                                    <a href="mailto:work@soulstickinteractive.com" class="contact-link">
                                         <span class="contact-icon">🤝</span>
-                                        <span class="contact-text">work@soulstick.com</span>
+                                        <span class="contact-text">work@soulstickinteractive.com</span>
                                     </a>
-                                    <!-- <a href="mailto:business@soulstick.studio" class="contact-link">
-                                        <span class="contact-icon">💼</span>
-                                        <span class="contact-text">business@soulstick.studio</span>
-                                    </a> -->
+                                </div>
+                            </div>
+
+                            <div class="contact-category">
+                                <h4>Careers</h4>
+                                <div class="contact-methods">
+                                    <a href="mailto:career@soulstickinteractive.com" class="contact-link">
+                                        <span class="contact-icon">🚀</span>
+                                        <span class="contact-text">career@soulstickinteractive.com</span>
+                                    </a>
                                 </div>
                             </div>
 
@@ -749,8 +751,7 @@
                         </div>
                         <div class="newsletter-signup">
                             <h4>Get in Touch</h4>
-                            <form class="signup-form" action="mailto:soulstickinteractive@gmail.com" method="post"
-                                enctype="text/plain">
+                            <form class="signup-form" onsubmit="handleFormSubmit(event)">
                                 <input type="text" name="name" placeholder="Name" class="text-input" required>
                                 <input type="email" name="email" placeholder="Email" class="text-input" required>
                                 <textarea name="message" placeholder="Write your message here..." class="text-input"

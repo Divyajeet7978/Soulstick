@@ -456,3 +456,23 @@ if (document.readyState === 'loading') {
 
 // Export for manual initialization
 window.TripleAPolish = TripleAPolish;
+
+/* ============================================
+   GLOBAL UTILITIES
+   ============================================ */
+window.handleFormSubmit = function (event) {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.querySelector('input[name="name"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const message = form.querySelector('textarea[name="message"]').value;
+
+    const subject = encodeURIComponent(`Inquiry from Soulstick Website: ${name}`);
+    const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n\n` +
+        `Message:\n${message}`
+    );
+
+    window.location.href = `mailto:soulstickinteractive@gmail.com?subject=${subject}&body=${body}`;
+};
