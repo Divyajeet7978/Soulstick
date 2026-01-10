@@ -482,7 +482,9 @@
     gap: var(--space-4);
 }
 
-.email-input {
+.email-input,
+.text-input,
+textarea.text-input {
     width: 100%;
     padding: var(--space-4);
     font-size: var(--font-size-base);
@@ -494,14 +496,23 @@
     transition: all var(--duration-fast) var(--easing-ease);
 }
 
-.email-input:focus {
+.email-input:focus,
+.text-input:focus,
+textarea.text-input:focus {
     border-color: var(--border-strong);
     box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
     /* Changed from red to dark blue */
 }
 
-.email-input::placeholder {
+.email-input::placeholder,
+.text-input::placeholder {
     color: var(--text-muted);
+}
+
+textarea.text-input {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
 }
 
 /* Mobile contact layout */

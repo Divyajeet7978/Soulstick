@@ -516,6 +516,45 @@ h6 {
     visibility: visible;
 }
 
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.social-icons-row {
+    flex-direction: row !important;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.social-icons-row .contact-link {
+    padding: 0;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.social-icons-row .contact-link:hover {
+    transform: translateY(-2px);
+}
+
+.social-icons-row .contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    font-size: 0;
+}
+
+.social-icons-row .contact-text {
+    display: none;
+}
+
 .mobile-nav-list {
     list-style: none;
     text-align: center;
