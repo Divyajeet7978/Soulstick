@@ -1,0 +1,331 @@
+/* ============================================
+   TRIPLE-A GAMING POLISH ENHANCEMENTS
+   Lead Creative Director Implementation
+   ============================================ */
+
+/* ============================================
+   PREMIUM BUTTON FEEDBACK SYSTEM
+   ============================================ */
+
+/* Gaming-grade button transforms with satisfying feedback */
+.cta-primary,
+.btn-wishlist,
+.btn-trailer {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s var(--ease-back-out);
+    will-change: transform;
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 10px 25px rgba(30, 58, 138, 0.3),
+        /* Changed from red to dark blue */
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.cta-primary:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s var(--ease-circ-out);
+}
+
+/* Ripple effect on click */
+.cta-primary::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s var(--ease-expo-out), height 0.6s var(--ease-expo-out);
+    pointer-events: none;
+}
+
+.cta-primary:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* ============================================
+   TORCH PROXIMITY LIGHTING SYSTEM
+   ============================================ */
+
+/* Elements emerge from darkness as cursor approaches */
+.torch-reveal {
+    transition: all 0.8s var(--ease-expo-out);
+    opacity: 0.6;
+    transform: scale(0.98);
+    filter: brightness(0.7) contrast(0.9);
+}
+
+.torch-reveal:hover,
+.torch-reveal.ember-proximity {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1.1) contrast(1.1);
+    text-shadow: 0 0 20px rgba(30, 58, 138, 0.3);
+    /* Changed from red to dark blue */
+}
+
+/* Proximity-based glow effect */
+.proximity-glow {
+    position: relative;
+    transition: all 0.6s var(--ease-circ-out);
+}
+
+.proximity-glow::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(135deg,
+            rgba(30, 58, 138, 0.1) 0%,
+            /* Changed from red to dark blue */
+            rgba(96, 165, 250, 0.05) 50%,
+            /* Changed from orange to light blue */
+            rgba(59, 130, 246, 0.1) 100%);
+    /* Changed from red-orange to medium blue */
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.6s var(--ease-expo-out);
+    filter: blur(10px);
+}
+
+.proximity-glow:hover::before,
+.proximity-glow.ember-proximity::before {
+    opacity: 1;
+}
+
+/* ============================================
+   CINEMATIC FILM GRAIN & ATMOSPHERE
+   ============================================ */
+
+/* Subtle film grain overlay for cinematic feel */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+    background-size: 50px 50px, 75px 75px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+    animation: grain-float 20s linear infinite;
+    mix-blend-mode: overlay;
+}
+
+@keyframes grain-float {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(-2px, -1px);
+    }
+
+    50% {
+        transform: translate(1px, -2px);
+    }
+
+    75% {
+        transform: translate(-1px, 1px);
+    }
+}
+
+/* Depth-of-field blur on distant elements */
+.depth-blur {
+    filter: blur(0.5px);
+    transition: filter 0.8s var(--ease-expo-out);
+}
+
+.depth-blur:hover {
+    filter: blur(0px);
+}
+
+/* ============================================
+   AMBIENT IDLE ANIMATIONS
+   ============================================ */
+
+/* Floating particles for ambient atmosphere */
+.ambient-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(30, 58, 138, 0.3);
+    /* Changed from red to dark blue */
+    border-radius: 50%;
+    animation: ambient-float 15s linear infinite;
+    pointer-events: none;
+}
+
+.ambient-particle:nth-child(odd) {
+    animation-direction: reverse;
+    background: rgba(96, 165, 250, 0.2);
+    /* Changed from orange to light blue */
+}
+
+@keyframes ambient-float {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0);
+        opacity: 0;
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        transform: translateY(-100px) translateX(50px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Pulsing background elements */
+.ambient-pulse {
+    animation: ambient-pulse 6s var(--ease-sine-out) infinite;
+}
+
+@keyframes ambient-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.02);
+    }
+}
+
+/* ============================================
+   CHROMATIC ABERRATION EFFECTS
+   ============================================ */
+
+/* Subtle chromatic aberration on interactive elements */
+.chromatic-aberration {
+    position: relative;
+}
+
+.chromatic-aberration::before,
+.chromatic-aberration::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease-circ-out);
+    pointer-events: none;
+}
+
+.chromatic-aberration::before {
+    color: rgba(255, 0, 0, 0.5);
+    transform: translateX(-1px);
+}
+
+.chromatic-aberration::after {
+    color: rgba(0, 255, 255, 0.5);
+    transform: translateX(1px);
+}
+
+.chromatic-aberration:hover::before,
+.chromatic-aberration:hover::after {
+    opacity: 0.1;
+}
+
+/* ============================================
+   ENHANCED SCROLL ANIMATIONS
+   ============================================ */
+
+/* Smooth reveal animations with stagger */
+.reveal-stagger {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.8s var(--ease-expo-out);
+}
+
+.reveal-stagger.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.reveal-stagger:nth-child(1) {
+    transition-delay: 0ms;
+}
+
+.reveal-stagger:nth-child(2) {
+    transition-delay: 100ms;
+}
+
+.reveal-stagger:nth-child(3) {
+    transition-delay: 200ms;
+}
+
+.reveal-stagger:nth-child(4) {
+    transition-delay: 300ms;
+}
+
+.reveal-stagger:nth-child(5) {
+    transition-delay: 400ms;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Force GPU acceleration for smooth animations */
+.gpu-accelerated {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Reduce animations on lower-end devices */
+@media (max-width: 768px) {
+    .ambient-particle {
+        display: none;
+    }
+
+    body::before {
+        opacity: 0.1;
+    }
+
+    .chromatic-aberration::before,
+    .chromatic-aberration::after {
+        display: none;
+    }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .ambient-particle,
+    .text-breathing,
+    .ambient-pulse {
+        animation: none;
+    }
+
+    body::before {
+        display: none;
+    }
+}

@@ -1,0 +1,324 @@
+/* ============================================
+   MICRO-POLISH LAYER - THE FINAL 10%
+   Senior Finishing Engineer Implementation
+   ============================================ */
+
+/* ============================================
+   PREMIUM TYPOGRAPHY RENDERING
+   ============================================ */
+
+/* Enhanced font rendering for crisp, premium text */
+body,
+.hero-title,
+.section-title,
+.game-title {
+    /* Optimized text rendering for premium feel */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Sub-pixel precision for sharp edges */
+    font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Premium letter-spacing for uppercase headers */
+.game-meta span,
+.nav-link,
+.btn-wishlist span,
+.btn-trailer span {
+    /* Increased spacing for optical balance and premium feel */
+    letter-spacing: 0.025em;
+    /* Changed from default 0 to 0.025em for breathing room */
+}
+
+.hero-title,
+.section-title {
+    /* Tighter tracking for display text optical balance */
+    letter-spacing: -0.015em;
+    /* Slight negative tracking for large text cohesion */
+}
+
+/* ============================================
+   PREMIUM MOTION CURVES - GAMING GRADE
+   ============================================ */
+
+/* Replace all lazy easing with purposeful curves */
+:root {
+    /* Ultra-snappy gaming curves for immediate response */
+    --ease-gaming-snap: cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Sharp snap for buttons */
+    --ease-gaming-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Playful overshoot */
+    --ease-gaming-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth but decisive */
+    --ease-gaming-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Subtle elastic */
+}
+
+/* Override generic transitions with premium curves */
+.btn-wishlist,
+.btn-trailer,
+.signup-btn {
+    /* Changed from sluggish var(--easing-ease) to snappy gaming curve */
+    transition: all var(--duration-fast) var(--ease-gaming-snap);
+}
+
+.cta-primary {
+    /* Enhanced primary button with elastic feel */
+    transition: all var(--duration-normal) var(--ease-gaming-elastic);
+}
+
+.nav-link {
+    /* Instant response for navigation */
+    transition: all var(--duration-instant) var(--ease-gaming-snap);
+}
+
+.value-card {
+    /* Changed from generic 0.3s ease to purposeful gaming curve */
+    transition: all 350ms var(--ease-gaming-smooth) !important;
+}
+
+.artwork-video {
+    /* Changed from generic 0.3s ease to snappy response */
+    transition: all var(--duration-normal) var(--ease-gaming-snap);
+}
+
+/* ============================================
+   VISUAL DEPTH - INNER LIGHTING SYSTEM
+   ============================================ */
+
+/* Subtle inner lighting for premium depth */
+.cta-primary,
+.btn-wishlist,
+.btn-trailer,
+.signup-btn {
+    /* Inner glow for lit-from-within gaming aesthetic */
+    box-shadow:
+        0 4px 20px rgba(30, 58, 138, 0.15),
+        /* Changed from red to dark blue */
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        /* Top highlight */
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+    /* Bottom shadow for depth */
+}
+
+.cta-primary:hover {
+    /* Enhanced inner lighting on hover */
+    box-shadow:
+        0 8px 30px rgba(30, 58, 138, 0.3),
+        /* Changed from red to dark blue */
+        0 4px 15px rgba(96, 165, 250, 0.2),
+        /* Additional blue glow - changed from amber */
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.value-card {
+    /* Subtle depth for card elements */
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05) !important;
+    /* Added subtle bottom shadow */
+}
+
+.value-card:hover {
+    /* Enhanced lighting on hover */
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        0 4px 12px rgba(30, 58, 138, 0.1),
+        /* Blue glow - changed from red */
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   TACTILE :ACTIVE STATES - CLICK CONFIDENCE
+   ============================================ */
+
+/* Every interactive element needs active feedback */
+.cta-primary:active {
+    /* Immediate tactile response - scale down for click confirmation */
+    transform: translateY(1px) scale(0.98);
+    /* Changed to push down + scale for tactile feel */
+    transition: all 50ms var(--ease-gaming-snap);
+    /* Instant feedback */
+    box-shadow:
+        0 2px 8px rgba(30, 58, 138, 0.2),
+        /* Reduced shadow when pressed - changed to blue */
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Inset shadow for pressed effect */
+}
+
+.btn-wishlist:active,
+.btn-trailer:active,
+.signup-btn:active {
+    /* Consistent active feedback across all buttons */
+    transform: translateY(0px) scale(0.97);
+    /* Subtle scale down */
+    transition: all 50ms var(--ease-gaming-snap);
+}
+
+.nav-link:active {
+    /* Navigation active state */
+    transform: scale(0.95);
+    /* Quick scale feedback */
+    opacity: 0.8;
+    /* Slight fade for confirmation */
+}
+
+.value-card:active {
+    /* Card press feedback */
+    transform: translateY(-2px) scale(0.99);
+    /* Slight lift + scale */
+    transition: all 100ms var(--ease-gaming-snap);
+}
+
+/* ============================================
+   CURSOR HARMONY SYSTEM
+   ============================================ */
+
+/* Enhanced cursor integration with hover states */
+.cta-primary:hover,
+.btn-wishlist:hover,
+.btn-trailer:hover {
+    /* Cursor size hint for interactive confidence */
+    cursor: none;
+    /* Maintain custom cursor */
+}
+
+/* Ember cursor scale sync with hover states */
+.nav-link:hover~#ember-cursor,
+.cta-primary:hover~#ember-cursor,
+.btn-wishlist:hover~#ember-cursor,
+.btn-trailer:hover~#ember-cursor {
+    /* Cursor grows when hovering interactive elements */
+    transform: scale(1.2);
+    /* 20% larger for interactive feedback */
+    transition: transform var(--duration-instant) var(--ease-gaming-snap);
+}
+
+/* ============================================
+   MICRO-ANIMATIONS - POLISHED DETAILS
+   ============================================ */
+
+/* Enhanced focus states for accessibility and polish */
+.cta-primary:focus-visible,
+.btn-wishlist:focus-visible,
+.btn-trailer:focus-visible {
+    /* Premium focus ring with ember glow */
+    outline: 2px solid rgba(30, 58, 138, 0.6);
+    /* Changed from red to dark blue */
+    outline-offset: 2px;
+    box-shadow:
+        0 0 0 4px rgba(30, 58, 138, 0.1),
+        /* Soft outer glow - changed to blue */
+        0 4px 20px rgba(30, 58, 138, 0.2),
+        /* Changed from red to dark blue */
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle button content shift on hover for premium feel */
+.cta-primary:hover .cta-text,
+.btn-wishlist:hover span,
+.btn-trailer:hover span {
+    /* Micro-movement for alive feeling */
+    transform: translateX(1px);
+    /* Subtle rightward shift */
+    transition: transform var(--duration-fast) var(--ease-gaming-snap);
+}
+
+/* Enhanced ember dot animation */
+.cta-ember {
+    /* More pronounced ember glow */
+    box-shadow:
+        0 0 10px var(--text-primary),
+        0 0 20px rgba(30, 58, 138, 0.5);
+    /* Additional outer glow - changed to blue */
+    animation: ember-pulse 2s var(--ease-gaming-smooth) infinite;
+}
+
+@keyframes ember-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        box-shadow:
+            0 0 15px var(--text-primary),
+            0 0 30px rgba(30, 58, 138, 0.7);
+        /* Brighter pulse - changed to blue */
+    }
+}
+
+/* ============================================
+   SUB-PIXEL PRECISION ALIGNMENT
+   ============================================ */
+
+/* Ensure crisp rendering on all devices */
+.cta-primary,
+.btn-wishlist,
+.btn-trailer,
+.value-card,
+.nav-link {
+    /* Force GPU acceleration for smooth animations */
+    will-change: transform;
+    transform: translateZ(0);
+    /* Hardware acceleration hint */
+    backface-visibility: hidden;
+    /* Prevent flicker */
+}
+
+/* Text sharpness optimization */
+.hero-title,
+.game-title,
+.section-title {
+    /* Crisp text rendering */
+    transform: translateZ(0);
+    -webkit-text-stroke: 0.5px transparent;
+    /* Sharpen text edges */
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Reduce motion for accessibility and performance */
+@media (prefers-reduced-motion: reduce) {
+
+    .cta-primary,
+    .btn-wishlist,
+    .btn-trailer,
+    .value-card,
+    .nav-link {
+        /* Respect user preferences while maintaining polish */
+        transition-duration: 0.1s;
+        animation: none;
+    }
+
+    .cta-ember {
+        animation: none;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+
+    /* Simplified transitions for touch devices */
+    .cta-primary,
+    .btn-wishlist,
+    .btn-trailer {
+        transition-duration: var(--duration-instant);
+        /* Faster for touch */
+    }
+
+    /* Larger touch targets */
+    .nav-link {
+        padding: var(--space-3) var(--space-4);
+        /* Increased touch area */
+    }
+}

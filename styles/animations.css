@@ -1,0 +1,541 @@
+/* ============================================
+   GSAP ENHANCED ANIMATIONS
+   Advanced Motion Design for Triple-A Experience
+   ============================================ */
+
+/* ============================================
+   PREMIUM EASING CURVES - CUSTOM BEZIERS
+   ============================================ */
+
+:root {
+    /* Premium easing curves for organic motion */
+    --ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-back-out: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-elastic-out: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-circ-out: cubic-bezier(0.075, 0.82, 0.165, 1);
+    --ease-quart-out: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-sine-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    /* Performance-aware animation toggles */
+    --enable-breathing: 1;
+    --enable-floating: 1;
+    --enable-glow-pulse: 1;
+}
+
+/* Disable heavy animations in performance mode */
+.performance-mode {
+    --enable-breathing: 0;
+    --enable-floating: 0;
+    --enable-glow-pulse: 0;
+}
+
+/* ============================================
+   CINEMATIC HERO BREATHING
+   ============================================ */
+
+/* Flickering dying flame effect for hero text */
+.text-breathing {
+    will-change: text-shadow, transform;
+    animation: hero-flame-flicker 3.5s var(--ease-sine-out) infinite;
+    animation-play-state: calc(var(--enable-breathing) * running + (1 - var(--enable-breathing)) * paused);
+    text-shadow:
+        0 0 20px rgba(30, 58, 138, 0.6),
+        /* Changed from red to dark blue */
+        0 0 40px rgba(96, 165, 250, 0.3);
+}
+
+@keyframes hero-flame-flicker {
+
+    0%,
+    100% {
+        opacity: 0.95;
+        transform: scale(1) skewX(0deg);
+        text-shadow:
+            0 0 20px rgba(30, 58, 138, 0.6),
+            0 0 40px rgba(96, 165, 250, 0.3);
+    }
+
+    15% {
+        opacity: 1;
+        transform: scale(1.002) skewX(0.1deg);
+        text-shadow:
+            0 0 25px rgba(30, 58, 138, 0.8),
+            0 0 50px rgba(96, 165, 250, 0.4);
+    }
+
+    45% {
+        opacity: 0.92;
+        transform: scale(0.999) skewX(-0.1deg);
+        text-shadow:
+            0 0 15px rgba(30, 58, 138, 0.4),
+            0 0 30px rgba(96, 165, 250, 0.2);
+    }
+
+    70% {
+        opacity: 0.98;
+        transform: scale(1.001) skewX(0.05deg);
+        text-shadow:
+            0 0 22px rgba(30, 58, 138, 0.7),
+            0 0 45px rgba(96, 165, 250, 0.35);
+    }
+}
+
+/* ============================================
+   IDLE "BREATHING" ANIMATIONS
+   ============================================ */
+
+/* Breathing glow for cards and interactive elements */
+.breathing-glow {
+    will-change: box-shadow;
+    animation: breathing-glow 4s var(--ease-sine-out) infinite;
+    animation-play-state: calc(var(--enable-breathing) * running + (1 - var(--enable-breathing)) * paused);
+}
+
+@keyframes breathing-glow {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 20px rgba(30, 58, 138, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow:
+            0 0 30px rgba(30, 58, 138, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        transform: scale(1.01);
+    }
+}
+
+/* Floating animation for hero elements */
+.floating-element {
+    animation: gentle-float 6s var(--ease-sine-out) infinite;
+    animation-play-state: calc(var(--enable-floating) * running + (1 - var(--enable-floating)) * paused);
+}
+
+@keyframes gentle-float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translateY(-8px) rotate(0.5deg);
+    }
+
+    66% {
+        transform: translateY(4px) rotate(-0.3deg);
+    }
+}
+
+/* Logo breathing */
+.logo-breathing {
+    animation: logo-pulse 5s var(--ease-circ-out) infinite;
+    animation-play-state: calc(var(--enable-breathing) * running + (1 - var(--enable-breathing)) * paused);
+}
+
+@keyframes logo-pulse {
+
+    0%,
+    100% {
+        filter: brightness(1) saturate(1);
+        text-shadow: 0 0 20px rgba(30, 58, 138, 0.3);
+    }
+
+    50% {
+        filter: brightness(1.1) saturate(1.1);
+        text-shadow: 0 0 30px rgba(30, 58, 138, 0.5);
+    }
+}
+
+/* Ambient particle movement */
+.ambient-particle {
+    animation: particle-drift 12s linear infinite;
+    animation-delay: calc(var(--particle-delay) * 1s);
+}
+
+@keyframes particle-drift {
+    0% {
+        transform: translate(0, 100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+        transform: translate(0, 90vh) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translate(100px, -10vh) scale(0.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(200px, -20vh) scale(0);
+    }
+}
+
+/* ============================================
+   REVEAL ANIMATIONS - CONTENT DISCOVERY
+   ============================================ */
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: none;
+}
+
+.reveal-fade {
+    opacity: 0;
+    transition: none;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: none;
+}
+
+.reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: none;
+}
+
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: none;
+}
+
+/* ============================================
+   MAGNETIC BUTTON INTERACTIONS
+   ============================================ */
+
+.magnetic-element {
+    transition: transform var(--ease-back-out) 0.3s, box-shadow var(--ease-expo-out) 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.magnetic-element::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(30, 58, 138, 0.1) 0%,
+            transparent 60%);
+    opacity: 0;
+    transition: opacity var(--ease-expo-out) 0.3s;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.magnetic-element.magnetic-attracted {
+    transform: translate(var(--attract-x, 0), var(--attract-y, 0)) scale(1.05);
+    box-shadow:
+        0 10px 40px rgba(30, 58, 138, 0.3),
+        0 0 20px rgba(96, 165, 250, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+.magnetic-element.magnetic-attracted::before {
+    opacity: 1;
+}
+
+button.magnetic-element,
+.btn.magnetic-element {
+    background: linear-gradient(135deg, var(--surface-primary) 0%, var(--surface-elevated) 100%);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(10px);
+    transition: all var(--ease-back-out) 0.4s;
+}
+
+button.magnetic-element:hover,
+.btn.magnetic-element:hover {
+    background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--surface-primary) 100%);
+    border-color: var(--magma);
+    color: var(--magma);
+    text-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
+}
+
+.nav-link.magnetic-element {
+    position: relative;
+    transition: all var(--ease-elastic-out) 0.5s;
+}
+
+.nav-link.magnetic-element::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--magma), var(--amber));
+    transform: scaleX(0);
+    transition: transform var(--ease-expo-out) 0.3s;
+}
+
+.nav-link.magnetic-element.magnetic-attracted::after {
+    transform: scaleX(1);
+}
+
+/* ============================================
+   CINEMATIC LIGHTING SYSTEM
+   ============================================ */
+
+/* Global torch lighting overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Updated to use CSS var from JS only if set, else fallback */
+    background: radial-gradient(circle calc(var(--torch-radius, 300px)) at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+            transparent 0%,
+            transparent 30%,
+            rgba(5, 5, 5, 0.1) 70%,
+            rgba(5, 5, 5, 0.3) 100%);
+    pointer-events: none;
+    z-index: 1000;
+    mix-blend-mode: multiply;
+    opacity: calc(var(--enable-glow-pulse) * 0.6);
+    transition: opacity 0.3s ease;
+}
+
+/* Atmospheric glow for sections */
+.section-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-glow::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(30, 58, 138, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(96, 165, 250, 0.03) 0%, transparent 50%);
+    animation: ambient-shift 20s var(--ease-sine-out) infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes ambient-shift {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(90deg) scale(1.1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(0.9);
+    }
+
+    75% {
+        transform: rotate(270deg) scale(1.05);
+    }
+}
+
+/* Card atmospheric lighting */
+.atmospheric-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 0 0 1px rgba(30, 58, 138, 0.1);
+}
+
+.atmospheric-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, transparent 40%, rgba(96, 165, 250, 0.05) 100%);
+    opacity: 0;
+    transition: opacity var(--ease-expo-out) 0.4s;
+    pointer-events: none;
+}
+
+.atmospheric-card:hover::after {
+    opacity: 1;
+}
+
+/* ============================================
+   FILM GRAIN TEXTURE OVERLAY
+   Optimized with SVG Noise
+   ============================================ */
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Lightweight SVG noise */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+    z-index: 2000;
+    mix-blend-mode: overlay;
+    opacity: 0.05;
+}
+
+.performance-mode body::after {
+    display: none;
+}
+
+/* ============================================
+   EMBER CURSOR ANIMATIONS
+   ============================================ */
+
+#ember-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    /* Removed opacity transition for snappier feel, handled in JS */
+    mix-blend-mode: screen;
+    left: 0;
+    top: 0;
+}
+
+#ember-cursor.active {
+    opacity: 1;
+}
+
+.ember-core {
+    position: relative;
+    width: var(--ember-trail-size);
+    height: var(--ember-trail-size);
+    background: radial-gradient(circle, var(--amber) 0%, var(--magma) 70%, transparent 100%);
+    border-radius: 50%;
+    box-shadow: var(--ember-glow);
+}
+
+.ember-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--ember-trail-size) * 3);
+    height: calc(var(--ember-trail-size) * 3);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(30, 58, 138, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* ============================================
+   CONTENT REVEAL MASKING SYSTEM
+   ============================================ */
+
+.content-mask {
+    mask: radial-gradient(circle var(--ember-reveal-radius) at var(--mouse-x, 50%) var(--mouse-y, 50%), white 100%, transparent 100%);
+    -webkit-mask: radial-gradient(circle var(--ember-reveal-radius) at var(--mouse-x, 50%) var(--mouse-y, 50%), white 100%, transparent 100%);
+    transition: mask 0.1s ease-out, -webkit-mask 0.1s ease-out;
+}
+
+.content-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.content-reveal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--void);
+    opacity: 0.9;
+    pointer-events: none;
+    transition: opacity var(--duration-normal) var(--easing-ease);
+}
+
+.content-reveal.revealed::before {
+    opacity: 0;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+.gpu-accelerated {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.high-frequency {
+    contain: layout style paint;
+}
+
+/* ============================================
+   RESPONSIVE ANIMATION ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    :root {
+        --ember-trail-size: 8px;
+        --ember-reveal-radius: 120px;
+    }
+
+    .ember-glow {
+        animation-duration: 3s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ember-glow,
+    .particle,
+    .floating-embers .ember {
+        animation: none !important;
+    }
+
+    .typewriter-text {
+        animation: none;
+        border-right: none;
+    }
+
+    .magnetic-element:hover {
+        transform: none !important;
+    }
+}

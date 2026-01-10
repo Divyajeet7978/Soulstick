@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soulstick Interactive - Forging Digital Souls</title>
+    <meta name="description"
+        content="Award-winning indie game studio crafting emotionally driven experiences that illuminate the human condition.">
+
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Progressive Enhancement Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/animations.css">
+    <link rel="stylesheet" href="./styles/premium-polish.css">
+    <link rel="stylesheet" href="./styles/micro-polish.css">
+
+    <!-- Critical JavaScript (Non-blocking) -->
+    <script src="https://unpkg.com/three@0.155.0/build/three.min.js" defer></script>
+    <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/dist/lenis.min.js" defer></script>
+    <script src="./scripts/triple-a-polish.js" defer></script>
+</head>
+
+<body>
+    <!-- WebGL Background Layer -->
+    <canvas id="webgl-atmosphere" aria-hidden="true"></canvas>
+
+    <!-- Ember Cursor Trail -->
+    <div id="ember-cursor" aria-hidden="true">
+        <div class="ember-core"></div>
+        <div class="ember-glow"></div>
+    </div>
+
+    <!-- Main UI Layer -->
+    <main id="content-layer">
+
+        <!-- Hero Section -->
+        <section class="hero-section" data-section="hero">
+            <header class="site-header">
+                <div class="logo-container">
+                    <h1 class="studio-name logo-breathing">
+                        <span class="soul floating-element">Soul</span><span class="stick floating-element">stick</span>
+                        <span class="tagline text-breathing">Interactive</span>
+                        <span class="official-tagline text-breathing">Crafting the Next Level</span>
+                    </h1>
+                </div>
+                <nav class="primary-nav" aria-label="Main navigation">
+                    <ul class="nav-list">
+                        <li><a href="#games" class="nav-link">Games</a></li>
+                        <li><a href="#services" class="nav-link">Services</a></li>
+                        <li><a href="#studio" class="nav-link">Studio</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                        <li>
+                            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="5"></circle>
+                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    <span class="title-line torch-reveal">Forging Digital</span>
+                    <span class="title-line title-emphasis text-breathing chromatic-aberration"
+                        data-text="Souls">Souls</span>
+                </h2>
+                <p class="hero-subtitle torch-reveal depth-blur">
+                    Soulstick Interactive is a newly founded game development studio committed to
+                    creating impactful and immersive interactive experiences. Established in 2025,
+                    we combine artistic vision and modern technology to build meaningful worlds
+                    and deliver engaging gameplay to players worldwide.
+                </p>
+                <div class="studio-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1</span>
+                        <span class="stat-label">Flagship Game</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">Est. 2025</span>
+                        <span class="stat-label">Founded</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Creative Possibilities</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <button class="cta-primary gpu-accelerated proximity-glow" data-scroll-to="#games">
+                        <span class="cta-text">Explore Our Games</span>
+                        <span class="cta-ember" aria-hidden="true"></span>
+                    </button>
+                    <button class="cta-secondary torch-reveal" data-scroll-to="#story">
+                        <span class="cta-text">Our Story</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ambient Elements -->
+            <div class="floating-embers" aria-hidden="true">
+                <div class="ember" data-speed="0.5" data-opacity="0.3"></div>
+                <div class="ember" data-speed="0.8" data-opacity="0.5"></div>
+                <div class="ember" data-speed="0.3" data-opacity="0.2"></div>
+                <div class="ember" data-speed="0.9" data-opacity="0.4"></div>
+                <div class="ember" data-speed="0.6" data-opacity="0.6"></div>
+            </div>
+        </section>
+
+        <!-- Featured Game Section -->
+        <section class="featured-game section-glow" id="games" data-section="games">
+            <div class="section-container">
+                <div class="game-showcase">
+                    <div class="game-info">
+                        <div class="game-meta">
+                            <span class="release-year">2025</span>
+                            <span class="game-genre">Emotional Platformer</span>
+                        </div>
+                        <h3 class="game-title">HOPE</h3>
+                        <p class="game-tagline">"Where every choice illuminates the path forward"</p>
+                        <p class="game-description">
+                            HOPE is our flagship 2.5D emotional platformer that transcends traditional gaming
+                            boundaries. Set in a world consumed by darkness, players embark on a profound journey
+                            as Luna, a young keeper of the last remaining flame. Navigate through breathtaking
+                            hand-crafted environments where light and shadow aren't just visual elements—they're
+                            core gameplay mechanics that shape your story.
+                        </p>
+                        <div class="game-story">
+                            <h4>The Story</h4>
+                            <p>
+                                In a realm where hope has nearly vanished, Luna carries the responsibility of
+                                rekindling the light that once flourished. Accompanied by Ember, an advanced
+                                emotional AI entity that learns and evolves based on your choices, you'll
+                                discover that every decision casts either light or shadow on the world around you.
+                            </p>
+                        </div>
+                        <div class="game-achievements breathing-glow">
+                            <div class="achievement">
+                                <span class="achievement-icon">🏅</span>
+                                <span class="achievement-icon">IGF Excellence in Narrative Nominee</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-icon">🎖️</span>
+                                <span>IndieCade Official Selection 2025</span>
+                            </div>
+                        </div>
+                        <div class="game-actions">
+                            <a href="https://store.steampowered.com/app/4055560/HOPE/" target="_blank"
+                                class="btn-wishlist">
+                                <span>Wishlist on Steam</span>
+                            </a>
+                            <button class="btn-trailer">
+                                <span>Watch Trailer</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="game-visual">
+                        <div class="game-artwork" data-parallax="0.3">
+                            <!-- HOPE Game Video -->
+                            <video class="artwork-video" autoplay muted loop playsinline>
+                                <source src="./assets/video6195052602888035782.mp4" type="video/mp4">
+                                <div class="artwork-placeholder"></div>
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Story Section -->
+        <section class="studio-story section-glow" id="story" data-section="story">
+            <div class="section-container">
+                <div class="story-content">
+                    <h3 class="section-title">The Birth of Soulstick Interactive</h3>
+                    <div class="story-narrative">
+                        <div class="story-text">
+                            <p class="story-lead">
+                                At Soulstick Interactive, we are committed to creating immersive and engaging
+                                digital experiences that reflect the evolving expectations of the modern
+                                entertainment landscape.
+                            </p>
+                            <p>
+                                Our work spans the full spectrum of game development from conceptual design
+                                to final execution as we craft meaningful worlds and interactive stories.
+                                We develop with a strong focus on gameplay systems, level design, and user
+                                experience, ensuring every project runs smoothly across targeted platforms.
+                            </p>
+                            <p>
+                                From narrative flow to visual direction, we build cohesive and interactive
+                                worlds driven by solid design principles, combining artistry with modern
+                                technology to deliver impactful gaming experiences.
+                            </p>
+                        </div>
+                        <div class="story-timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-date">2025</span>
+                                <div class="timeline-content">
+                                    <h4>Studio Founded</h4>
+                                    <p>Established with a vision to revolutionize emotional storytelling in games</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Q2 2025</span>
+                                <div class="timeline-content">
+                                    <h4>HOPE Development Begins</h4>
+                                    <p>Started development of our flagship emotional AI-driven platformer</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-date">Q4 2025</span>
+                                <div class="timeline-content">
+                                    <h4>Industry Recognition</h4>
+                                    <p>HOPE receives nomination for Excellence in Narrative at IGF</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section section-glow" id="team" data-section="team">
+            <div class="section-container">
+                <div class="team-content">
+                    <h3 class="section-title">The Torchbearers</h3>
+                    <p class="team-intro">
+                        Meet the passionate individuals behind Soulstick Interactive—a diverse collective
+                        of storytellers, technologists, and dreamers united by our mission to illuminate
+                        the human experience through interactive art.
+                    </p>
+                    <div class="team-grid">
+                        <div class="team-member founder atmospheric-card breathing-glow">
+                            <div class="member-avatar">
+                                <div class="avatar-placeholder">K</div>
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">KISHAN PANDA</h4>
+                                <p class="member-role">Founder & Creative Director</p>
+                                <p class="member-bio">
+                                    Visionary founder with a background in narrative design and emotional psychology.
+                                    KISHAN's passion for meaningful storytelling drives the studio's creative direction,
+                                    believing that games can serve as powerful vehicles for empathy and understanding.
+                                </p>
+                                <div class="member-specialties">
+                                    <span class="specialty">Narrative Design</span>
+                                    <span class="specialty">Emotional AI</span>
+                                    <span class="specialty">Creative Vision</span>
+                                    <span class="specialty">Studio Leadership</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <div class="avatar-placeholder">E</div>
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">Lead AI Developer</h4>
+                                <p class="member-role">Emotional Intelligence Systems</p>
+                                <p class="member-bio">
+                                    Specialist in machine learning and emotional recognition, responsible for
+                                    creating Ember's revolutionary empathetic AI framework that powers our games.
+                                </p>
+                                <div class="member-specialties">
+                                    <span class="specialty">Machine Learning</span>
+                                    <span class="specialty">Emotional Recognition</span>
+                                    <span class="specialty">AI Ethics</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <div class="avatar-placeholder">A</div>
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">Art Director</h4>
+                                <p class="member-role">Visual Storytelling</p>
+                                <p class="member-bio">
+                                    Award-winning artist who brings emotional depth to every pixel, creating
+                                    the stunning hand-painted worlds that define our visual identity.
+                                </p>
+                                <div class="member-specialties">
+                                    <span class="specialty">2.5D Art</span>
+                                    <span class="specialty">Environmental Design</span>
+                                    <span class="specialty">Visual Narrative</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <div class="avatar-placeholder">S</div>
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">Sound Designer</h4>
+                                <p class="member-role">Adaptive Audio Systems</p>
+                                <p class="member-bio">
+                                    Composer and sound engineer who crafts dynamic soundscapes that respond
+                                    to player emotions, creating truly adaptive musical experiences.
+                                </p>
+                                <div class="member-specialties">
+                                    <span class="specialty">Adaptive Music</span>
+                                    <span class="specialty">Emotional Soundscapes</span>
+                                    <span class="specialty">Interactive Audio</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision & Mission Section -->
+        <section class="vision-mission-section section-glow" id="vision" data-section="vision">
+            <div class="section-container">
+                <div class="vision-mission-content">
+                    <div class="vision-mission-grid">
+                        <div class="vision-card atmospheric-card breathing-glow">
+                            <h3 class="vision-title">Our Vision</h3>
+                            <p class="vision-text">
+                                To become a leading and innovative creative force in the global gaming industry,
+                                shaping the future of interactive entertainment through artistry, storytelling, and
+                                technology.
+                                We envision building immersive worlds and meaningful experiences that inspire players,
+                                elevate creativity, and contribute to a more expressive and emotionally connected gaming
+                                landscape.
+                            </p>
+                        </div>
+                        <div class="mission-card atmospheric-card breathing-glow">
+                            <h3 class="mission-title">Our Mission</h3>
+                            <p class="mission-text">
+                                Our mission is to thoughtfully craft, design, and deliver engaging interactive
+                                experiences
+                                that resonate with players worldwide. By staying true to our creative values and
+                                leveraging
+                                modern tools and techniques, we strive to meet the evolving expectations of today's
+                                gamers
+                                while paving the way for richer, more impactful storytelling in the future.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section section-glow" id="services" data-section="services">
+            <div class="section-container">
+                <div class="services-content">
+                    <h3 class="section-title">What We Do</h3>
+                    <div class="services-intro">
+                        <p>
+                            At Soulstick Interactive, we are committed to creating immersive and engaging digital
+                            experiences
+                            that reflect the evolving expectations of the modern entertainment landscape. Our work spans
+                            the
+                            full spectrum of game development from conceptual design to final execution.
+                        </p>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card featured atmospheric-card breathing-glow">
+                            <div class="service-icon">🎮</div>
+                            <h4 class="service-title">Game Development & Designing</h4>
+                            <p class="service-description">
+                                We develop 2D and 2.5D games with a strong focus on gameplay systems, level design,
+                                and user experience. Our process covers prototyping, mechanic iteration, asset
+                                integration,
+                                and final polish, ensuring every project runs smoothly across targeted platforms. From
+                                narrative
+                                flow to visual direction, we build cohesive and interactive worlds driven by solid
+                                design principles.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">2D/2.5D Games</span>
+                                <span class="feature-tag">Level Design</span>
+                                <span class="feature-tag">User Experience</span>
+                                <span class="feature-tag">Cross-Platform</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">🎨</div>
+                            <h4 class="service-title">Graphic Design & Branding</h4>
+                            <p class="service-description">
+                                We create high-quality visual assets and brand systems tailored for digital
+                                entertainment.
+                                This includes social media posts, logo design, marketing graphics, typographic systems,
+                                and promotional materials. Our workflow emphasizes clarity, consistency, and
+                                adaptability
+                                across multiple formats, whether for in-game use or external communication.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">Brand Identity</span>
+                                <span class="feature-tag">Marketing Graphics</span>
+                                <span class="feature-tag">Social Media</span>
+                                <span class="feature-tag">Typography</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">✏️</div>
+                            <h4 class="service-title">Illustration & Concept Art</h4>
+                            <p class="service-description">
+                                We generate detailed character designs, environment concepts, prop sheets, and style
+                                explorations
+                                essential for pre-production. Our concept pipeline supports visual development by
+                                defining silhouette
+                                language, color palettes, mood direction, and production-ready references that guide the
+                                entire
+                                art and animation process.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">Character Design</span>
+                                <span class="feature-tag">Environment Concepts</span>
+                                <span class="feature-tag">Style Exploration</span>
+                                <span class="feature-tag">Visual Development</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">🎬</div>
+                            <h4 class="service-title">3D/2D Animation</h4>
+                            <p class="service-description">
+                                We bring characters and environments to life through fluid animation that enhances
+                                storytelling
+                                and gameplay. Our animation process covers character rigging, motion design, cinematic
+                                sequences,
+                                and interactive animations that seamlessly integrate with game mechanics and narrative
+                                flow.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">Character Animation</span>
+                                <span class="feature-tag">Motion Design</span>
+                                <span class="feature-tag">Cinematics</span>
+                                <span class="feature-tag">Interactive Animation</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">🧊</div>
+                            <h4 class="service-title">3D Modeling & Visualization</h4>
+                            <p class="service-description">
+                                We create detailed 3D assets and environments that serve both gameplay and visual
+                                storytelling.
+                                Our modeling process includes low-poly and high-poly workflows, texturing, lighting
+                                setup,
+                                and optimization for real-time rendering across various platforms and performance
+                                requirements.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">3D Modeling</span>
+                                <span class="feature-tag">Texturing</span>
+                                <span class="feature-tag">Lighting</span>
+                                <span class="feature-tag">Optimization</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">📹</div>
+                            <h4 class="service-title">Video Editing & Motion Graphics</h4>
+                            <p class="service-description">
+                                We produce compelling promotional content, trailers, and motion graphics that showcase
+                                games
+                                and interactive experiences. Our video production workflow covers editing, color
+                                grading,
+                                sound design, and motion graphics creation for marketing, social media, and presentation
+                                purposes.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">Trailers</span>
+                                <span class="feature-tag">Motion Graphics</span>
+                                <span class="feature-tag">Color Grading</span>
+                                <span class="feature-tag">Sound Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Section -->
+        <section class="studio-section" id="studio" data-section="studio">
+            <div class="section-container">
+                <div class="studio-content">
+                    <h3 class="section-title">Our Philosophy</h3>
+                    <div class="philosophy-text">
+                        <p class="philosophy-lead">
+                            We believe in the power of interactive media to foster genuine emotional connection
+                            and personal growth through meaningful digital experiences.
+                        </p>
+                        <p class="philosophy-lead">
+                            True innovation emerges when technology serves emotion, when mechanics amplify meaning,
+                            and when every pixel contributes to a deeper understanding of the human condition.
+                        </p>
+                        <p class="philosophy-lead">
+                            Games are not just entertainment—they are mirrors that reflect our choices,
+                            laboratories for empathy, and bridges connecting diverse souls through shared narratives.
+                        </p>
+                        <div class="values-grid">
+                            <div class="value-card reveal-stagger torch-reveal proximity-glow gpu-accelerated">
+                                <div class="value-icon">🔥</div>
+                                <h4>Emotional Authenticity</h4>
+                                <p>Every interaction designed to resonate with genuine human experience.</p>
+                            </div>
+                            <div class="value-card reveal-stagger torch-reveal proximity-glow gpu-accelerated">
+                                <div class="value-icon">⚡</div>
+                                <h4>Innovative Mechanics</h4>
+                                <p>Pushing boundaries in AI-driven storytelling and adaptive gameplay.</p>
+                            </div>
+                            <div class="value-card reveal-stagger torch-reveal proximity-glow gpu-accelerated">
+                                <div class="value-icon">🌟</div>
+                                <h4>Meaningful Impact</h4>
+                                <p>Creating experiences that linger long after the screen goes dark.</p>
+                            </div>
+                            <div class="value-card reveal-stagger torch-reveal proximity-glow gpu-accelerated">
+                                <div class="value-icon">🎭</div>
+                                <h4>Narrative Depth</h4>
+                                <p>Weaving stories that honor the complexity of human emotion and choice.</p>
+                            </div>
+                            <div class="value-card reveal-stagger torch-reveal proximity-glow gpu-accelerated">
+                                <div class="value-icon">🌱</div>
+                                <h4>Personal Growth</h4>
+                                <p>Designing transformative journeys that inspire reflection and self-discovery.</p>
+                            </div>
+                            <div class="value-card reveal-stagger torch-reveal proximity-glow gpu-accelerated">
+                                <div class="value-icon">🤝</div>
+                                <h4>Inclusive Design</h4>
+                                <p>Building bridges across cultures, abilities, and perspectives through universal
+                                    themes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section section-glow" id="projects" data-section="projects">
+            <div class="section-container">
+                <div class="projects-content">
+                    <h3 class="section-title">Our Creative Portfolio</h3>
+                    <div class="projects-intro">
+                        <p>
+                            While HOPE represents our flagship vision, our creative journey encompasses
+                            various experiments in emotional storytelling, innovative technology, and interactive art.
+                        </p>
+                    </div>
+                    <div class="projects-grid">
+                        <div class="project-card featured atmospheric-card breathing-glow">
+                            <div class="project-header">
+                                <h4 class="project-title">HOPE</h4>
+                                <span class="project-status">In Development</span>
+                            </div>
+                            <p class="project-description">
+                                Our flagship 2.5D emotional platformer featuring revolutionary AI companions
+                                and light-shadow gameplay mechanics that redefine narrative gaming.
+                            </p>
+                            <div class="project-details">
+                                <span class="detail-item">🎮 2.5D Platformer</span>
+                                <span class="detail-item">🤖 Emotional AI</span>
+                                <span class="detail-item">🎨 Hand-Painted Art</span>
+                                <span class="detail-item">🎵 Adaptive Music</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Unity 2D</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Wwise Audio</span>
+                                <span class="tech-tag">Custom AI</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4 class="project-title">Ember AI Framework</h4>
+                                <span class="project-status">Core Technology</span>
+                            </div>
+                            <p class="project-description">
+                                Proprietary emotional AI system that forms the foundation of our interactive
+                                storytelling technology. Ember learns and evolves through genuine emotional
+                                interactions.
+                            </p>
+                            <div class="project-details">
+                                <span class="detail-item">🧠 Machine Learning</span>
+                                <span class="detail-item">💭 Emotion Recognition</span>
+                                <span class="detail-item">🔄 Adaptive Responses</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Neural Networks</span>
+                                <span class="tech-tag">Emotion API</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4 class="project-title">Light & Shadow Engine</h4>
+                                <span class="project-status">Proprietary Tech</span>
+                            </div>
+                            <p class="project-description">
+                                Advanced rendering system that makes light and shadow core gameplay elements
+                                rather than just visual effects, creating meaningful player agency.
+                            </p>
+                            <div class="project-details">
+                                <span class="detail-item">💡 Dynamic Lighting</span>
+                                <span class="detail-item">🎮 Gameplay Integration</span>
+                                <span class="detail-item">⚡ Real-time Processing</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Custom Shaders</span>
+                                <span class="tech-tag">Real-time Lighting</span>
+                                <span class="tech-tag">Physics Integration</span>
+                            </div>
+                        </div>
+                        <div class="project-card upcoming atmospheric-card breathing-glow">
+                            <div class="project-header">
+                                <h4 class="project-title">Project Echo</h4>
+                                <span class="project-status">Concept Phase</span>
+                            </div>
+                            <p class="project-description">
+                                Our next venture exploring multiplayer emotional connections through
+                                shared virtual experiences and collective storytelling. Coming 2026.
+                            </p>
+                            <div class="project-details">
+                                <span class="detail-item">👥 Multiplayer</span>
+                                <span class="detail-item">🌐 Shared Worlds</span>
+                                <span class="detail-item">🎭 Collective Narrative</span>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Unreal Engine</span>
+                                <span class="tech-tag">Multiplayer</span>
+                                <span class="tech-tag">VR Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-glow" id="contact" data-section="contact">
+            <div class="section-container">
+                <div class="contact-content">
+                    <h3 class="section-title">Ignite a Conversation</h3>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <p class="contact-intro">
+                                Ready to collaborate, share ideas, or simply connect?
+                                We're always eager to engage with fellow creators
+                                and passionate gamers.
+                            </p>
+                            <div class="contact-category">
+                                <h4>General Inquiries</h4>
+                                <div class="contact-methods">
+                                    <a href="mailto:soulstickinteractive@gmail.com" class="contact-link">
+                                        <span class="contact-icon">📧</span>
+                                        <span class="contact-text">soulstickinteractive@gmail.com</span>
+                                    </a>
+                                    <a href="mailto:hello@soulstick.studio" class="contact-link">
+                                        <span class="contact-icon">💬</span>
+                                        <span class="contact-text">hello@soulstick.studio</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-category">
+                                <h4>Business & Partnerships</h4>
+                                <div class="contact-methods">
+                                    <a href="mailto:partnerships@soulstick.studio" class="contact-link">
+                                        <span class="contact-icon">🤝</span>
+                                        <span class="contact-text">partnerships@soulstick.studio</span>
+                                    </a>
+                                    <a href="mailto:business@soulstick.studio" class="contact-link">
+                                        <span class="contact-icon">💼</span>
+                                        <span class="contact-text">business@soulstick.studio</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-category">
+                                <h4>Follow Our Journey</h4>
+                                <div class="contact-methods">
+                                    <a href="https://instagram.com/soulstick_interactive" class="contact-link"
+                                        target="_blank">
+                                        <span class="contact-icon">📷</span>
+                                        <span class="contact-text">@soulstick_interactive</span>
+                                    </a>
+                                    <a href="https://linkedin.com/company/soulstickinteractive" class="contact-link"
+                                        target="_blank">
+                                        <span class="contact-icon">💼</span>
+                                        <span class="contact-text">LinkedIn Company</span>
+                                    </a>
+                                    <a href="#" class="contact-link">
+                                        <span class="contact-icon">🎮</span>
+                                        <span class="contact-text">Steam Developer Page</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="newsletter-signup">
+                            <h4>Stay in the Loop</h4>
+                            <form class="signup-form">
+                                <input type="email" placeholder="your.email@domain.com" class="email-input" required>
+                                <button type="submit" class="signup-btn">
+                                    <span>Subscribe</span>
+                                    <span class="btn-ember" aria-hidden="true"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer Credit Banner -->
+        <footer class="developer-footer" id="developer">
+            <div class="section-container">
+                <div class="developer-content reveal-stagger">
+                    <p class="dev-tagline">Engineered for the Digital Frontier by</p>
+                    <div class="dev-profile">
+                        <h3 class="dev-name torch-reveal" data-text="Divyajeet Panda">Divyajeet Panda</h3>
+                        <div class="dev-contacts">
+                            <a href="https://divyajeet.netlify.app/" target="_blank" class="dev-link magnetic-element">
+                                <span class="link-icon">🌐</span>
+                                <span class="link-text">divyajeet.netlify.app</span>
+                            </a>
+                            <a href="mailto:divyajeetpanda@outlook.com" class="dev-link magnetic-element">
+                                <span class="link-icon">📧</span>
+                                <span class="link-text">divyajeetpanda@outlook.com</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p class="copyright">&copy; 2026 Soulstick Interactive. Built with Triple-A Precision.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-torch">
+                <div class="torch-flame"></div>
+                <div class="torch-base"></div>
+            </div>
+            <p class="loading-text">Igniting Experience...</p>
+        </div>
+    </div>
+
+    <!-- Application Scripts -->
+    <script src="./scripts/ember-cursor.js" defer></script>
+    <script src="./scripts/webgl-atmosphere.js" defer></script>
+    <script src="./scripts/scroll-sync.js" defer></script>
+    <script src="./scripts/app.js" defer></script>
+</body>
+
+</html>
