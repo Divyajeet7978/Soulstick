@@ -312,27 +312,41 @@ h6 {
     border-bottom: 1px solid var(--border-subtle);
 }
 
-.studio-name {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
+.logo-link {
     display: flex;
-    align-items: baseline;
-    gap: var(--space-1);
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
-.soul {
-    color: var(--magma);
+.logo-link:hover {
+    opacity: 0.8;
 }
 
-.stick {
-    color: var(--text-primary);
+.studio-logo {
+    display: block;
+    height: auto;
+    width: 140px;
+    /* Adjusted based on visual weight */
+    object-fit: contain;
 }
 
-.tagline {
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
-    font-weight: 400;
-    margin-left: var(--space-2);
+/* Default Theme (Dark) - Show White Logo */
+.logo-light {
+    display: none;
+}
+
+.logo-dark {
+    display: block;
+}
+
+/* Light Theme - Show Black Logo */
+[data-theme="light"] .logo-light {
+    display: block;
+}
+
+[data-theme="light"] .logo-dark {
+    display: none;
 }
 
 .primary-nav {
