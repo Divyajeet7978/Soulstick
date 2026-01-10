@@ -21,6 +21,7 @@ class TripleAPolish {
         this.setupScrollRevealAnimations();
         this.setupAmbientParticles();
         this.setupAdvancedInteractions();
+        this.setupMobileMenu(); // New Mobile Menu Logic
         this.setupPerformanceOptimizations();
 
         this.isInitialized = true;
@@ -206,6 +207,38 @@ class TripleAPolish {
 
         // Cinematic depth of field
         this.setupDepthOfField();
+    }
+
+    /* ============================================
+       MOBILE NAVIGATION SYSTEM
+       ============================================ */
+
+    setupMobileMenu() {
+        const mobileToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileOverlay = document.querySelector('.mobile-nav-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        const closeButton = document.querySelector('.mobile-nav-close');
+
+        if (!mobileToggle || !mobileOverlay) return;
+
+        const toggleMenu = (isActive) => {
+            mobileToggle.classList.toggle('active', isActive);
+            mobileOverlay.classList.toggle('active', isActive);
+            document.body.style.overflow = isActive ? 'hidden' : '';
+            mobileToggle.setAttribute('aria-expanded', isActive);
+        };
+
+        mobileToggle.addEventListener('click', () => {
+            const isActive = !mobileToggle.classList.contains('active');
+            toggleMenu(isActive);
+        });
+
+        // Close menu when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+        });
     }
 
     setupButtonFeedback() {

@@ -299,7 +299,7 @@ h6 {
     background: rgba(5, 5, 5, 0.8);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-subtle);
-    z-index: 1000;
+    z-index: 1005;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -390,9 +390,16 @@ h6 {
     width: 80%;
 }
 
+/* Header Actions Container */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
 /* Theme Toggle */
 .theme-toggle {
-    margin-left: var(--space-4);
+    /* Margin removed as it's now handled by gap in header-right */
     background: transparent;
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
@@ -412,102 +419,193 @@ h6 {
     border-color: var(--magma);
 }
 
-/* Mobile Navigation */
-/* Mobile Navigation & Layout Refinements */
+/* Mobile Menu Toggle (Hamburger) */
+.mobile-menu-toggle {
+    display: none;
+    /* Hidden on desktop */
+    background: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1002;
+    /* Above overlay */
+    position: relative;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger-box {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+    left: 0;
+}
+
+.hamburger-inner {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+    content: '';
+    top: -8px;
+}
+
+.hamburger-inner::after {
+    content: '';
+    bottom: -8px;
+}
+
+/* Hamburger Active State (X shape) */
+.mobile-menu-toggle.active .hamburger-inner {
+    background-color: transparent;
+}
+
+.mobile-menu-toggle.active .hamburger-inner::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--void-dark);
+    z-index: 1001;
+    /* Below toggle (1002), above content */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--easing-ease);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+/* Light theme support */
+[data-theme="light"] .mobile-nav-overlay {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.mobile-nav-link {
+    font-size: var(--font-size-2xl);
+    font-family: var(--font-family-display);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s ease;
+    display: block;
+}
+
+/* Stagger link animations when opening */
+.mobile-nav-overlay.active .mobile-nav-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-nav-overlay.active .mobile-nav-link:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.mobile-nav-overlay.active .mobile-nav-link:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.mobile-nav-overlay.active .mobile-nav-link:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.mobile-nav-overlay.active .mobile-nav-link:nth-child(4) {
+    transition-delay: 0.25s;
+}
+
+.mobile-nav-link:hover {
+    color: var(--magma);
+    transform: scale(1.1) !important;
+}
+
+/* Mobile Layout Tweaks */
 @media (max-width: 768px) {
     .site-header {
-        height: 60px;
-        /* Compact Header */
-        padding: 0 var(--space-3);
+        height: 70px;
+        padding: 0 var(--space-4);
     }
 
-    .studio-name {
-        font-size: var(--font-size-lg);
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        line-height: 1.1;
-        flex-shrink: 0;
-        /* Prevent logo shrinking */
-    }
-
-    .tagline,
-    .official-tagline {
-        display: none;
-        /* Reduce clutter */
-    }
-
-    /* Scrollable Horizontal Nav */
-    .primary-nav {
-        flex-grow: 1;
-        justify-content: flex-end;
-        overflow: hidden;
-        /* Control overflow */
-    }
-
-    .nav-list {
-        gap: var(--space-1);
-        overflow-x: auto;
-        padding-bottom: 0;
-        -webkit-overflow-scrolling: touch;
-        /* Smooth scroll */
-        scrollbar-width: none;
-        /* Firefox */
-        justify-content: flex-end;
-        /* Align to right */
-    }
-
-    .nav-list::-webkit-scrollbar {
-        display: none;
-        /* Chrome/Safari */
-    }
-
-    .nav-link {
-        padding: var(--space-2);
-        font-size: var(--font-size-xs);
-        white-space: nowrap;
-        /* Prevent text wrap */
-    }
-
-    /* Hero Typography Scaling */
-    .hero-title {
-        font-size: 2.25rem;
-        /* Manageable size */
-        margin-bottom: var(--space-4);
-    }
-
-    .hero-subtitle {
-        font-size: var(--font-size-base);
-        margin-bottom: var(--space-8);
-        padding: 0 var(--space-2);
-    }
-
-    /* Mobile CTA Stack */
-    .hero-cta {
-        flex-direction: column;
-        width: 100%;
+    .header-right {
         gap: var(--space-3);
     }
 
-    .cta-primary,
-    .cta-secondary {
-        width: 100%;
-        /* Full width touch targets */
-        text-align: center;
-        padding: 14px 20px;
+    /* Hide Desktop Nav */
+    .primary-nav {
+        display: none;
     }
 
-    /* Hide decorative/cursor elements on touch */
-    #ember-cursor,
-    .ember-trail-particle {
-        display: none !important;
+    /* Show Mobile Toggle */
+    .mobile-menu-toggle {
+        display: flex;
     }
 
-    body {
-        cursor: auto;
-        /* Restore native cursor */
+    /* Logo tweaks */
+    .logo-container {
+        flex-shrink: 0;
+    }
+
+    .studio-logo {
+        width: 120px;
+    }
+
+    .studio-name {
+        display: none;
+    }
+
+    /* Ensure no horizontal scroll on mobile */
+    .logo-link,
+    .header-right {
+        z-index: 1002;
+        /* Keep interactive elements above overlay */
     }
 }
+
+
 
 /* ============================================
    HERO SECTION

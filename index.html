@@ -53,31 +53,50 @@
                             alt="Soulstick Interactive" width="180">
                     </a>
                 </div>
-                <nav class="primary-nav" aria-label="Main navigation">
-                    <ul class="nav-list">
-                        <li><a href="#games" class="nav-link">Games</a></li>
-                        <li><a href="#services" class="nav-link">Services</a></li>
-                        <li><a href="#studio" class="nav-link">Studio</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                        <li>
-                            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="5"></circle>
-                                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                                </svg>
-                            </button>
-                        </li>
+                <div class="header-right">
+                    <nav class="primary-nav" aria-label="Main navigation">
+                        <ul class="nav-list">
+                            <li><a href="#games" class="nav-link">Games</a></li>
+                            <li><a href="#services" class="nav-link">Services</a></li>
+                            <li><a href="#studio" class="nav-link">Studio</a></li>
+                            <li><a href="#contact" class="nav-link">Contact</a></li>
+                        </ul>
+                    </nav>
+
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+
+                    <button class="mobile-menu-toggle" aria-label="Open Menu">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Mobile Navigation Overlay -->
+            <div class="mobile-nav-overlay">
+                <nav class="mobile-nav-content">
+                    <ul class="mobile-nav-list">
+                        <li><a href="#games" class="mobile-nav-link" data-text="Games">Games</a></li>
+                        <li><a href="#services" class="mobile-nav-link" data-text="Services">Services</a></li>
+                        <li><a href="#studio" class="mobile-nav-link" data-text="Studio">Studio</a></li>
+                        <li><a href="#contact" class="mobile-nav-link" data-text="Contact">Contact</a></li>
                     </ul>
                 </nav>
-            </header>
+            </div>
 
             <div class="hero-content">
                 <h2 class="hero-title">
@@ -269,6 +288,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="team-member founder atmospheric-card breathing-glow">
+                            <div class="member-avatar">
+                                <div class="avatar-placeholder">B</div>
+                            </div>
+                            <div class="member-info">
+                                <h4 class="member-name">BISWAJIT TRIPATHY</h4>
+                                <p class="member-role">Co-Founder & Lead Developer</p>
+                                <p class="member-bio">
+                                    The technical backbone of Soulstick, Biswajit transforms creative visions into
+                                    playable reality. As a co-founder, he architects the core systems and
+                                    mechanics that define our studio's signature feel, bridging the gap between
+                                    art and code.
+                                </p>
+                                <div class="member-specialties">
+                                    <span class="specialty">Core Systems</span>
+                                    <span class="specialty">Game Mechanics</span>
+                                    <span class="specialty">Technical Leadership</span>
+                                    <span class="specialty">Performance</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="team-member">
                             <div class="member-avatar">
                                 <div class="avatar-placeholder">E</div>
@@ -380,7 +420,7 @@
                             <div class="service-icon">🎮</div>
                             <h4 class="service-title">Game Development & Designing</h4>
                             <p class="service-description">
-                                We develop 2D and 2.5D games with a strong focus on gameplay systems, level design,
+                                We develop 3D and 2.5D games with a strong focus on gameplay systems, level design,
                                 and user experience. Our process covers prototyping, mechanic iteration, asset
                                 integration,
                                 and final polish, ensuring every project runs smoothly across targeted platforms. From
@@ -389,10 +429,67 @@
                                 design principles.
                             </p>
                             <div class="service-features">
-                                <span class="feature-tag">2D/2.5D Games</span>
+                                <span class="feature-tag">3D/2.5D Games</span>
                                 <span class="feature-tag">Level Design</span>
                                 <span class="feature-tag">User Experience</span>
                                 <span class="feature-tag">Cross-Platform</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">🧊</div>
+                            <h4 class="service-title">3D Modeling & Visualization</h4>
+                            <p class="service-description">
+                                We create detailed 3D assets and environments that serve both gameplay and visual
+                                storytelling.
+                                Our modeling process includes low-poly and high-poly workflows, texturing, lighting
+                                setup,
+                                and optimization for real-time rendering across various platforms and performance
+                                requirements.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">3D Modeling</span>
+                                <span class="feature-tag">Texturing</span>
+                                <span class="feature-tag">Lighting</span>
+                                <span class="feature-tag">Optimization</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">🎬</div>
+                            <h4 class="service-title">3D/2D Animation</h4>
+                            <p class="service-description">
+                                We bring characters and environments to life through fluid animation that enhances
+                                storytelling
+                                and gameplay. Our animation process covers character rigging, motion design, cinematic
+                                sequences,
+                                and interactive animations that seamlessly integrate with game mechanics and narrative
+                                flow.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">Character Animation</span>
+                                <span class="feature-tag">Motion Design</span>
+                                <span class="feature-tag">Cinematics</span>
+                                <span class="feature-tag">Interactive Animation</span>
+                            </div>
+                        </div>
+
+                        <div class="service-card">
+                            <div class="service-icon">📹</div>
+                            <h4 class="service-title">Video Editing & Motion Graphics</h4>
+                            <p class="service-description">
+                                We produce compelling promotional content, trailers, and motion graphics that showcase
+                                games
+                                and interactive experiences. Our video production workflow covers editing, color
+                                grading,
+                                sound design, and motion graphics creation for marketing, social media, and presentation
+                                purposes.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag">Trailers</span>
+                                <span class="feature-tag">Motion Graphics</span>
+                                <span class="feature-tag">Color Grading</span>
+                                <span class="feature-tag">Sound Design</span>
                             </div>
                         </div>
 
@@ -432,63 +529,6 @@
                                 <span class="feature-tag">Environment Concepts</span>
                                 <span class="feature-tag">Style Exploration</span>
                                 <span class="feature-tag">Visual Development</span>
-                            </div>
-                        </div>
-
-                        <div class="service-card">
-                            <div class="service-icon">🎬</div>
-                            <h4 class="service-title">3D/2D Animation</h4>
-                            <p class="service-description">
-                                We bring characters and environments to life through fluid animation that enhances
-                                storytelling
-                                and gameplay. Our animation process covers character rigging, motion design, cinematic
-                                sequences,
-                                and interactive animations that seamlessly integrate with game mechanics and narrative
-                                flow.
-                            </p>
-                            <div class="service-features">
-                                <span class="feature-tag">Character Animation</span>
-                                <span class="feature-tag">Motion Design</span>
-                                <span class="feature-tag">Cinematics</span>
-                                <span class="feature-tag">Interactive Animation</span>
-                            </div>
-                        </div>
-
-                        <div class="service-card">
-                            <div class="service-icon">🧊</div>
-                            <h4 class="service-title">3D Modeling & Visualization</h4>
-                            <p class="service-description">
-                                We create detailed 3D assets and environments that serve both gameplay and visual
-                                storytelling.
-                                Our modeling process includes low-poly and high-poly workflows, texturing, lighting
-                                setup,
-                                and optimization for real-time rendering across various platforms and performance
-                                requirements.
-                            </p>
-                            <div class="service-features">
-                                <span class="feature-tag">3D Modeling</span>
-                                <span class="feature-tag">Texturing</span>
-                                <span class="feature-tag">Lighting</span>
-                                <span class="feature-tag">Optimization</span>
-                            </div>
-                        </div>
-
-                        <div class="service-card">
-                            <div class="service-icon">📹</div>
-                            <h4 class="service-title">Video Editing & Motion Graphics</h4>
-                            <p class="service-description">
-                                We produce compelling promotional content, trailers, and motion graphics that showcase
-                                games
-                                and interactive experiences. Our video production workflow covers editing, color
-                                grading,
-                                sound design, and motion graphics creation for marketing, social media, and presentation
-                                purposes.
-                            </p>
-                            <div class="service-features">
-                                <span class="feature-tag">Trailers</span>
-                                <span class="feature-tag">Motion Graphics</span>
-                                <span class="feature-tag">Color Grading</span>
-                                <span class="feature-tag">Sound Design</span>
                             </div>
                         </div>
                     </div>
