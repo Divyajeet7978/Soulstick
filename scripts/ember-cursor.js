@@ -25,7 +25,6 @@ class EmberCursor {
 
         // Bind methods once
         this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.handleTouch = this.handleTouch.bind(this);
 
         this.init();
     }
@@ -81,10 +80,6 @@ class EmberCursor {
         document.addEventListener('mouseenter', () => this.activate(), opts);
         document.addEventListener('mouseleave', () => this.deactivate(), opts);
 
-        document.addEventListener('touchstart', this.handleTouch, opts);
-        document.addEventListener('touchmove', this.handleTouch, { passive: false });
-        document.addEventListener('touchend', () => this.deactivate(), opts);
-
         document.addEventListener('mousedown', () => this.scaleCursor(0.8));
         document.addEventListener('mouseup', () => this.scaleCursor(1));
     }
@@ -93,14 +88,6 @@ class EmberCursor {
         this.mouse.x = e.clientX;
         this.mouse.y = e.clientY;
         if (!this.isActive) this.activate();
-    }
-
-    handleTouch(e) {
-        if (e.touches.length > 0) {
-            this.mouse.x = e.touches[0].clientX;
-            this.mouse.y = e.touches[0].clientY;
-            if (!this.isActive) this.activate();
-        }
     }
 
     activate() {
