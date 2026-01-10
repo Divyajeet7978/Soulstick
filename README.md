@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/84149f63-b653-4e39-b9bc-75802f212bb2/deploy-status)](https://app.netlify.com/projects/soulstickinteractive/deploys)
+
+
 # Soulstick Interactive 🎮✨
 
 **Soulstick Interactive** is an award-winning indie game studio and digital creative agency dedicated to crafting emotionally driven experiences that illuminate the human condition. 
