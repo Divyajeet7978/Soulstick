@@ -146,14 +146,17 @@ class EmberCursor {
     startAnimationLoop() {
         const animate = () => {
             this.rafId = requestAnimationFrame(animate);
-            if (!this.isActive) return;
 
-            this.spawnParticle();
+            // Only spawn and follow mouse when active
+            if (this.isActive) {
+                this.spawnParticle();
+                this.renderCursor();
+                this.lastMouse.x = this.mouse.x;
+                this.lastMouse.y = this.mouse.y;
+            }
+
+            // Always update existing particles so they fade out naturally
             this.updateParticles();
-            this.renderCursor();
-
-            this.lastMouse.x = this.mouse.x;
-            this.lastMouse.y = this.mouse.y;
         };
         this.rafId = requestAnimationFrame(animate);
     }
