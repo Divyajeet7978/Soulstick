@@ -420,6 +420,10 @@ body::after {
     mix-blend-mode: screen;
     left: 0;
     top: 0;
+    opacity: 0;
+    /* Hidden by default */
+    transition: opacity 0.3s ease;
+    /* Smooth fade in/out */
 }
 
 #ember-cursor.active {
