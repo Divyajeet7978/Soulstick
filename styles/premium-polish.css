@@ -329,3 +329,20 @@ body::before {
         display: none;
     }
 }
+
+/* ============================================
+   HERO SUBTITLE OVERRIDE - ALWAYS IN FOCUS
+   ============================================ */
+
+/* Override torch-reveal and depth-blur for hero subtitle */
+.hero-subtitle.torch-reveal.depth-blur {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+.hero-subtitle.torch-reveal.depth-blur:hover {
+    opacity: 1 !important;
+    filter: none !important;
+}

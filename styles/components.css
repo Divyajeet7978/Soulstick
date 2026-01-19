@@ -715,6 +715,9 @@ textarea.text-input {
     color: var(--text-primary);
     margin-bottom: var(--space-6);
     line-height: 1.6;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
 }
 
 .story-text p {
